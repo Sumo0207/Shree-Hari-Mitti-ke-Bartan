@@ -1,0 +1,10 @@
+{
+    "name": "shree-hari-project",
+    "private": true,
+    "scripts": {
+        "web:dev": "cd web && npm run dev",
+        "web:build": "cd web && npm run build",
+        "admin:dev": "cd admin && npm run dev",
+        "admin:build": "cd admin && npm run build"
+    }
+}

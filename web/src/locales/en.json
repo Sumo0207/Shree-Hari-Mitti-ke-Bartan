@@ -1,0 +1,218 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "admin": "Admin",
+    "back": "Back",
+    "guides": "Guides",
+    "testimonials": "Testimonials"
+  },
+  "home": {
+    "title": "Shree Hari Mitti ke Bartan",
+    "brand": {
+      "line1": "Shree Hari",
+      "line2": "Mitti Ke Bartan"
+    },
+    "heroTagline": "Every piece carries a story of earth and devotion.",
+    "exploreCollection": "Explore Collection",
+    "ourStory": "Our Story",
+    "aboutTitle": "A Tradition Rooted in Clay",
+    "aboutPara1": "Shree Hari Mitti ke Bartan is a journey of faith, tradition, and craftsmanship.",
+    "aboutPara2": "Every piece is handmade with devotion, without machines, without haste.",
+    "aboutPara3": "True purity and beauty take time and care.",
+    "craftTitle": "Crafted with Faith and Care",
+    "craftStep1": "Pure clay selection",
+    "craftStep2": "Traditional hand shaping",
+    "craftStep3": "Kiln firing",
+    "craftStep4": "Natural finishing",
+    "productsTitle": "Stories Shaped in Clay",
+    "category1": "Water Pots & Surahi",
+    "category2": "Kulhad & Cups",
+    "category3": "Handmade Plates",
+    "category4": "Diyas & Decor",
+    "whyTitle": "Why Shree Hari Mitti ke Bartan?",
+    "whyPoint1": "100% natural and eco-friendly",
+    "whyPoint2": "Handmade with devotion by Indian artisans",
+    "whyPoint3": "Rooted in Indian tradition",
+    "whyPoint4": "Pure clay, pure living",
+    "quoteText": "In every clay vessel, there is faith, tradition, and devotion.",
+    "contactTitle": "Stay Connected with Tradition",
+    "connectWithUs": "Connect with Us",
+    "testimonialsTitle": "Customer Testimonials"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Each creation tells a story of heritage, craftsmanship, and connection to the earth.",
+    "story": "The Story",
+    "category": "Category",
+    "noProducts": "No products available yet.",
+    "careTipsTitle": "Clay Care Tips",
+    "firstUse": "First Use",
+    "firstUseDesc": "Soak the clay product in water for 4-6 hours before first use. This helps strengthen the clay and prevents cracking.",
+    "cleaning": "Cleaning",
+    "cleaningDesc": "Wash with plain water or mild natural soap. Avoid harsh detergents and abrasive scrubbers that can damage the clay.",
+    "drying": "Drying",
+    "dryingDesc": "Always air dry completely before storage. Never store wet clay products as moisture can weaken them.",
+    "cooking": "Cooking Tips",
+    "cookingDesc": "For clay cookware, always start with low to medium heat. Sudden temperature changes can cause cracks. Season regularly with oil.",
+    "storage": "Storage",
+    "storageDesc": "Store in a dry, well-ventilated area. Stack with care using soft cloth between items to prevent chipping.",
+    "traditionTitle": "Tradition Meets Modern Living",
+    "traditionDesc1": "In today's world of plastic and synthetic materials, returning to clay is not just a choice — it's a statement. A statement about caring for our health, respecting our environment, and honoring our cultural heritage.",
+    "traditionDesc2": "Our clay products fit seamlessly into modern homes while bringing the warmth and authenticity of traditional craftsmanship. Whether it's your morning chai in a kulhad, water from a matka, or meals from clay plates, each use is a small step toward a more sustainable and connected lifestyle.",
+    "traditionQuote": "Every clay vessel is a bridge between our past and our future."
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "A journey of preserving ancient traditions and connecting hearts through the art of clay.",
+    "mainTitle": "A Tradition Rooted in Clay",
+    "para1": "Shree Hari Mitti ke Bartan is a journey of faith, tradition, and craftsmanship.",
+    "para2": "Every piece is handmade with devotion, without machines, without haste.",
+    "para3": "True purity and beauty take time and care.",
+    "valuesTitle": "Our Values",
+    "loveTitle": "Made with Love",
+    "loveDesc": "Every product is crafted with care and dedication, ensuring quality and authenticity in each piece.",
+    "communityTitle": "Community First",
+    "communityDesc": "Supporting local artisans and preserving traditional craftsmanship for future generations.",
+    "naturalTitle": "Natural & Pure",
+    "naturalDesc": "Using only natural, chemical-free clay to create products that are safe and sustainable.",
+    "processTitle": "Crafted with Faith and Care",
+    "step1": "Pure clay selection",
+    "step1Desc": "We carefully select the finest natural clay from local sources, ensuring purity and quality in every batch.",
+    "step2": "Traditional hand shaping",
+    "step2Desc": "Skilled artisans shape the clay using traditional techniques passed down through generations.",
+    "step3": "Kiln firing",
+    "step3Desc": "Products are sun-dried naturally and then fired in traditional kilns to achieve durability and strength.",
+    "step4": "Natural finishing",
+    "step4Desc": "Each piece is inspected, finished, and blessed before it finds its way to your home.",
+    "quote": "In every curve and contour, you'll find the dedication of hands that have mastered their craft over lifetimes.",
+    "quoteAuthor": "Our Master Artisans",
+    "heritage": "Clay in Indian Culture",
+    "heritageDesc": "For thousands of years, clay has been at the heart of Indian households. From storing water in matkas to serving chai in kulhads, clay vessels have been symbols of purity, health, and connection to the earth."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Explore our handcrafted pottery collection",
+    "loading": "Loading gallery...",
+    "noImages": "No images in gallery yet.",
+    "behindTheScenes": {
+      "title": "Behind the Scenes",
+      "workshop": {
+        "title": "The Workshop",
+        "para1": "Step into our traditional workshop where generations of expertise meets passion for the craft. Every morning begins with preparing the clay, kneading it to perfection, ensuring no air bubbles remain.",
+        "para2": "Our artisans work in harmony with the material, coaxing it into beautiful forms on the potter's wheel. The rhythmic spinning, the gentle pressure of skilled hands, and the slow transformation of shapeless clay into functional art — this is where magic happens."
+      },
+      "firing": {
+        "title": "The Firing Process",
+        "para1": "After shaping, each piece must rest. Sun-drying is crucial, allowing moisture to evaporate naturally. This patience cannot be rushed — it's the clay telling us when it's ready.",
+        "para2": "The traditional kiln firing is an art in itself. Watching the clay transform under intense heat, gaining strength and its characteristic terracotta hue, is a sight that never loses its wonder. Each piece emerges tested by fire, ready to serve generations."
+      },
+      "quality": {
+        "title": "Quality Check",
+        "para1": "Before any product leaves our workshop, it undergoes careful inspection. We check for structural integrity, finish quality, and that intangible quality — the soul of craftsmanship. Only pieces that meet our standards carry the Shree Hari name."
+      }
+    },
+    "community": {
+      "title": "Stories from Our Community",
+      "testimonial1": {
+        "text": "\"Using mitti ke bartan has reconnected me with my grandmother's kitchen. The taste of dal in a clay pot is incomparable!\"",
+        "author": "Priya Sharma, Mumbai"
+      },
+      "testimonial2": {
+        "text": "\"Every Diwali, I order diyas from Shree Hari. They're not just lamps, they're a piece of our culture and tradition.\"",
+        "author": "Rajesh Kumar, Delhi"
+      },
+      "testimonial3": {
+        "text": "\"The water from the matka tastes so fresh and pure. It's like going back to simpler, healthier times.\"",
+        "author": "Meera Patel, Ahmedabad"
+      }
+    }
+  },
+  "contact": {
+    "title": "Stay Connected with Tradition",
+    "subHeader": "Have questions or custom requests? We'd love to hear from you.",
+    "subtitle": "We'd love to hear from you. Reach out to us for orders, queries, or just to say hello.",
+    "getInTouch": "Get in Touch",
+    "visitUs": "Visit Us",
+    "callUs": "Call Us",
+    "emailUs": "Email Us",
+    "businessHours": "Business Hours",
+    "days": "Mon - Sat: 9:00 AM - 7:00 PM",
+    "closed": "Sunday: Closed",
+    "sendMessageHeader": "Send a Message",
+    "name": "Your Name",
+    "email": "Email Address",
+    "phone": "Phone (Optional)",
+    "message": "Message",
+    "messagePlaceholder": "How can we help you?",
+    "sending": "Sending...",
+    "submit": "Send Message",
+    "successTitle": "Message Sent!",
+    "successDesc": "We'll get back to you as soon as possible.",
+    "errorTitle": "Error",
+    "errorDesc": "Failed to send message. Please try again.",
+    "whatsapp": "Chat on WhatsApp",
+    "call": "Call Us",
+    "address": "Visit Us",
+    "addressLine": "Traditional Pottery Workshop, Gujarat, India",
+    "followUs": "Follow Us"
+  },
+  "guides": {
+    "title": "Expert Guides & Tips",
+    "subtitle": "Discover the secrets of clay cooking, care instructions, and health benefits.",
+    "readMore": "Read More",
+    "categories": {
+      "usage": "Usage",
+      "care": "Care",
+      "benefit": "Benefit",
+      "blog": "Blog"
+    },
+    "comingSoon": {
+      "title": "Coming Soon",
+      "description": "We are crafting detailed guides for you. Check back later!"
+    }
+  },
+  "footer": {
+    "tagline": "Made with Faith in India",
+    "description": "Traditional clay pottery crafted with love and care, connecting you to our rich cultural heritage.",
+    "quickLinks": "Quick Links",
+    "madeWith": "Made with",
+    "byArtisans": "by traditional artisans",
+    "handmadeInIndia": "Handmade in India",
+    "rights": "All rights reserved.",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "developer": "Made by Sumit M. Katakiya"
+  },
+  "testimonials": {
+    "title": "Share Your Experience",
+    "subtitle": "We'd love to hear about your experience with our products",
+    "none": "No testimonials yet.",
+    "name": "Your Name",
+    "namePlaceholder": "Enter your name",
+    "location": "Location (Optional)",
+    "locationPlaceholder": "City, Country",
+    "message": "Your Experience",
+    "messagePlaceholder": "Share your experience with our products...",
+    "rating": "Rating",
+    "submit": "Submit Testimonial",
+    "success": "Testimonial Submitted",
+    "successDesc": "Your testimonial has been submitted and is pending approval.",
+    "error": "Failed to submit testimonial",
+    "pendingNote": "Your testimonial will be reviewed by our team before being published."
+  },
+  "auth": {
+    "login": "Login",
+    "loginRequired": "Login Required",
+    "loginToAddTestimonial": "Please login to share your experience"
+  },
+  "common": {
+    "error": "Error",
+    "submitting": "Submitting..."
+  }
+}

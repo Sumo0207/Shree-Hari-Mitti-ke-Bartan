@@ -1,0 +1,154 @@
+/* eslint-disable @tailwindcss/no-directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Earthy terracotta and clay tones */
+    --background: 35 40% 96%;
+    --foreground: 25 30% 20%;
+
+    --card: 35 35% 98%;
+    --card-foreground: 25 30% 20%;
+
+    --popover: 35 35% 98%;
+    --popover-foreground: 25 30% 20%;
+
+    /* Warm terracotta primary */
+    --primary: 18 65% 52%;
+    --primary-foreground: 35 40% 98%;
+
+    /* Soft clay secondary */
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 25 30% 25%;
+
+    /* Muted earth tones */
+    --muted: 35 20% 88%;
+    --muted-foreground: 25 20% 45%;
+
+    /* Sage green accent */
+    --accent: 120 25% 45%;
+    --accent-foreground: 35 40% 98%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 35 40% 98%;
+
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 18 65% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom clay-inspired tokens */
+    --clay-dark: 20 40% 35%;
+    --clay-light: 35 30% 92%;
+    --terracotta-glow: 18 75% 62%;
+
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(18 65% 52%) 0%, hsl(35 50% 65%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(35 40% 96%) 0%, hsl(35 30% 92%) 100%);
+
+    /* Shadows */
+    --shadow-clay: 0 4px 20px -4px hsl(18 65% 52% / 0.25);
+    --shadow-soft: 0 2px 12px -2px hsl(25 30% 20% / 0.1);
+
+    /* Sidebar Variables - adapted to match theme */
+    --sidebar-background: 35 40% 98%;
+    --sidebar-foreground: 25 30% 20%;
+    --sidebar-primary: 18 65% 52%;
+    --sidebar-primary-foreground: 35 40% 98%;
+    --sidebar-accent: 35 25% 88%;
+    --sidebar-accent-foreground: 25 30% 20%;
+    --sidebar-border: 35 25% 88%;
+    --sidebar-ring: 18 65% 52%;
+  }
+
+  .dark {
+    --background: 25 25% 12%;
+    --foreground: 35 30% 92%;
+
+    --card: 25 25% 15%;
+    --card-foreground: 35 30% 92%;
+
+    --popover: 25 25% 15%;
+    --popover-foreground: 35 30% 92%;
+
+    --primary: 18 75% 58%;
+    --primary-foreground: 35 30% 92%;
+
+    --secondary: 25 20% 22%;
+    --secondary-foreground: 35 30% 92%;
+
+    --muted: 25 20% 22%;
+    --muted-foreground: 35 20% 65%;
+
+    --accent: 120 30% 50%;
+    --accent-foreground: 35 30% 92%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 35 30% 92%;
+
+    --border: 25 20% 22%;
+    --input: 25 20% 22%;
+    --ring: 18 75% 58%;
+
+    --clay-dark: 20 30% 25%;
+    --clay-light: 25 20% 18%;
+    --terracotta-glow: 18 85% 65%;
+
+    /* Sidebar Variables - Dark Mode */
+    --sidebar-background: 25 25% 12%;
+    --sidebar-foreground: 35 30% 92%;
+    --sidebar-primary: 18 75% 58%;
+    --sidebar-primary-foreground: 35 30% 92%;
+    --sidebar-accent: 25 20% 22%;
+    --sidebar-accent-foreground: 35 30% 92%;
+    --sidebar-border: 25 20% 22%;
+    --sidebar-ring: 18 75% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', 'Noto Sans Devanagari', 'Noto Sans Gujarati', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', 'Noto Sans Gujarati', serif;
+  }
+
+  .font-script {
+    font-family: 'Dancing Script', 'Noto Sans Devanagari', 'Noto Sans Gujarati', cursive;
+  }
+}
+
+@layer utilities {
+  .clay-texture {
+    background-image:
+      radial-gradient(circle at 20% 50%, hsl(35 30% 92% / 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(18 40% 60% / 0.2) 0%, transparent 50%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
