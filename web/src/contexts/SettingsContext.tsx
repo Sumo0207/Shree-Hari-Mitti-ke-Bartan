@@ -30,7 +30,12 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 .single();
 
             if (error) {
-                console.error('Error fetching settings:', error);
+                console.error('Error fetching settings:', {
+                    message: error.message,
+                    status: (error as any).status || (error as any).statusCode || null,
+                    details: (error as any).details || (error as any).hint || null,
+                    raw: error,
+                });
             } else {
                 setSettings(data);
             }

@@ -1,4 +1,8 @@
-# Welcome to your Lovable project
+# Shree Hari Mitti ke Bartan - Customer Website (`web`)
+
+## 🌐 Live Web Link
+
+- **Live Website**: [https://sumo0207.github.io/Shree-Hari-Mitti-ke-Bartan/](https://sumo0207.github.io/Shree-Hari-Mitti-ke-Bartan/)
 
 ## Project info
 

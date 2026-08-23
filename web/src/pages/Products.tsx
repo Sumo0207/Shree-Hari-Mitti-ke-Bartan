@@ -6,6 +6,7 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { PageTransition } from "@/components/PageTransition";
 import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface Product {
   id: string;
@@ -15,14 +16,16 @@ interface Product {
   name_translations?: Record<string, string>;
   description_translations?: Record<string, string>;
   story_translations?: Record<string, string>;
+  how_to_use?: string | null;
+  how_to_use_en?: string | null;
+  how_to_use_hi?: string | null;
+  how_to_use_gu?: string | null;
   image_url: string | null;
   category_id: string | null;
   category?: { name: string };
   display_order: number;
   is_featured: boolean;
   product_images?: ProductImage[];
-  price?: number;
-  stock_status?: "in_stock" | "out_of_stock" | "made_to_order";
 }
 
 interface ProductImage {
@@ -43,8 +46,10 @@ const Products = () => {
   const { t, language, getLocalizedContent } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const selectedCategoryId = searchParams.get('category');
+  const usageLabel = language === 'hi' ? 'कैसे इस्तेमाल करें' : language === 'gu' ? 'કેમ વાપરવું' : 'How to use';
 
   useEffect(() => {
     fetchCategories();
@@ -158,15 +163,12 @@ const Products = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product, index) => (
-                <Link
-                  to={`/products/${product.id}`}
+                <div
                   key={product.id}
-                  className="group"
+                  className="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fade-in-up border border-border hover:border-primary/50 h-full flex flex-col"
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <div
-                    className="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fade-in-up border border-border hover:border-primary/50 h-full flex flex-col"
-                    style={{ animationDelay: `${index * 0.05}s` }}
-                  >
+                  <Link to={`/products/${product.id}`} className="group flex flex-col flex-grow">
                     <div className="aspect-[4/3] overflow-hidden relative bg-muted/20">
                       {product.image_url ? (
                         <img
@@ -179,11 +181,7 @@ const Products = () => {
                           <Package className="text-muted-foreground opacity-50" size={48} />
                         </div>
                       )}
-                      {product.stock_status === 'out_of_stock' && (
-                        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                          Sold Out
-                        </div>
-                      )}
+                      {/* stock status removed */}
                       {product.is_featured && (
                         <div className="absolute top-2 left-2 bg-amber-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
                           Featured
@@ -208,23 +206,45 @@ const Products = () => {
                         {getLocalizedContent(product, 'description')}
                       </p>
 
-                      <div className="mt-auto pt-4 border-t border-border flex items-center justify-between">
-                        {product.price ? (
-                          <span className="text-lg font-bold text-primary">₹{product.price}</span>
-                        ) : (
-                          <span className="text-sm font-medium text-muted-foreground">Price upon request</span>
-                        )}
+                      <div className="mt-auto pt-4 border-t border-border">
                         <span className="text-sm font-medium text-primary group-hover:underline">
                           View Details
                         </span>
                       </div>
                     </div>
+                  </Link>
+                  <div className="px-6 pb-6">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setSelectedProduct(product);
+                      }}
+                    >
+                      {usageLabel}
+                    </Button>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           )}
         </section>
+
+        <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle>{usageLabel}</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                {selectedProduct ? getLocalizedContent(selectedProduct, 'how_to_use') || 'No usage instructions available yet.' : ''}
+              </p>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Clay Care Tips - Simplified for overview */}
         <section className="py-16 bg-secondary/30">

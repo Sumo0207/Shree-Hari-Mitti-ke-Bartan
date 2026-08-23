@@ -48,7 +48,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-nowrap">
             {canGoBack && (
               <Button variant="ghost" size="sm" onClick={handleBack} className="mr-2">
                 <ArrowLeft className="h-4 w-4 mr-1" />
@@ -68,7 +68,7 @@ const Navbar = () => {
             {user ? (
               <ProfileDropdown />
             ) : (
-              <Button variant="outline" size="sm" onClick={() => navigate('/auth')}>
+              <Button variant="outline" size="sm" onClick={() => navigate('/auth')} className="flex-shrink-0 whitespace-nowrap min-w-[92px] justify-center">
                 <LogIn className="h-4 w-4 mr-2" />
                 {t("nav.login")}
               </Button>
@@ -76,7 +76,7 @@ const Navbar = () => {
           </div>
 
           {/* Tablet Menu - Show limited items */}
-          <div className="hidden md:flex lg:hidden items-center gap-2">
+          <div className="hidden md:flex lg:hidden items-center gap-2 flex-nowrap">
             <LanguageSelector />
             {user ? (
               <ProfileDropdown />

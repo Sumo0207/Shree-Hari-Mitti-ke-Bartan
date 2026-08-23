@@ -1,0 +1,40 @@
+Use this single, copy-pasteable image-generation prompt. Replace bracketed placeholders before sending to an image tool or photographer.
+
+"Create a set of high-quality product images for: [PRODUCT_TITLE] — SKU [SKU], slug [PRODUCT_SLUG].
+
+Product details: color [COLOR], material [MATERIAL], size [DIMENSIONS], weight [WEIGHT], finish [FINISH], variant [VARIANT_NAME if any]. Brand: [BRAND]. Primary keyword: [SEO_KEYWORD].
+
+Style/theme (choose one): Minimalist Clay | Earthy Artisan | Studio Portrait | Lifestyle Context | Flatlay | Detail & Texture | Color Pop | Seasonal.
+
+Deliverables (per product):
+- HERO: 1 image — three-quarter front view, centered, soft natural key light, subtle shadow, background [BACKGROUND_COLOR or 'neutral beige/gray'], aspect ratio 4:5. Alt: [ALT_HERO].
+- ANGLES: 3–5 images — front, side, back, 45°. Consistent lighting and distance. Filenames: {product-slug}_angle_[front|side|back|45].webp.
+- DETAIL: 2–4 macro close-ups of texture/finish/joins; shallow depth of field. Alt texts: list per file.
+- LIFESTYLE: 1–3 in-use scenes for scale (include human hand or context). Mood: [MOOD]. Caption example: [SHORT_CAPTION].
+- FLATLAY: 1 top-down composition with complementary props; leave negative space for text overlay.
+
+Technical & export:
+- Formats: WebP primary, JPEG fallback; keep originals (TIFF) archived.
+- Resolutions: long edge ≥ 2000 px; export responsive sizes: 400 / 800 / 1200 / 2000 px and 2x retina.
+- Color profile: sRGB. Provide PNG with transparent background for isolated hero.
+- Filenames: {product-slug}_{shot}_{variant}_{seq}.{ext} (example: wheel-bowl_hero_glazeA_01.webp).
+- Embed metadata: SKU, product-slug, shot-type, photographer/date in EXIF.
+
+Accessibility & SEO:
+- Alt text: 5–12 words; include material, color, function, and size (e.g., "Hand-thrown terracotta bowl, matte glaze, 18 cm").
+- Caption: one-line use-case or care tip (e.g., "Dishwasher safe — hand wash recommended for matte glaze").
+- SEO: include primary keyword [SEO_KEYWORD] in image title and alt text.
+
+Styling cues:
+- Lighting: soft natural or softbox, 45° key direction, fill to reduce harsh shadows.
+- Props: wood/linen for artisan; minimal monochrome props for minimalist.
+- Textures: include macro shots of rim, base, glaze pooling, or stitching.
+- Consistency: match white balance and exposure across set; maintain same aspect ratio for catalog grid.
+
+Delivery checklist (final): CSV mapping with columns [filename, alt_text, caption, shot_type, resolution, format], hero caption (3 sentences), one-line care instruction, and exported image sets.
+
+Template placeholders to replace before use: [PRODUCT_TITLE], [SKU], [PRODUCT_SLUG], [COLOR], [MATERIAL], [DIMENSIONS], [WEIGHT], [FINISH], [VARIANT_NAME], [BRAND], [SEO_KEYWORD], [BACKGROUND_COLOR], [ALT_HERO], [MOOD], [SHORT_CAPTION].
+
+End of prompt."
+
+Date created: 2026-07-06

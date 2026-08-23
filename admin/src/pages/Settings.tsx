@@ -60,9 +60,9 @@ const Settings = () => {
             const { error: syncError } = await supabase
                 .from('settings')
                 .update({
-                    business_name: settings.business_name_en,
-                    address: settings.address_en,
-                    footer_text: settings.footer_en
+                    business_name_en: settings.business_name_en,
+                    address_en: settings.address_en,
+                    footer_en: settings.footer_en
                 })
                 .eq('id', 1);
 

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Loader2, Lock, Mail, AlertCircle } from 'lucide-react';
+import { isAdminUser } from '@/lib/adminAccess';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -20,13 +21,17 @@ const Login = () => {
             const { data: { session } } = await supabase.auth.getSession();
             if (session) {
                 // Check if user is admin
-                const { data: profile } = await supabase
+                const { data: profile, error: profileError } = await supabase
                     .from('profiles')
                     .select('role')
                     .eq('id', session.user.id)
-                    .single();
-                
-                if (profile?.role === 'admin') {
+                    .maybeSingle();
+
+                if (profileError) {
+                    console.warn('Profile lookup warning:', profileError);
+                }
+
+                if (isAdminUser(profile?.role, session?.user?.email)) {
                     navigate('/');
                 }
             }
@@ -34,15 +39,18 @@ const Login = () => {
         };
         checkSession();
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
             if (session) {
                 supabase
                     .from('profiles')
                     .select('role')
                     .eq('id', session.user.id)
-                    .single()
-                    .then(({ data: profile }) => {
-                        if (profile?.role === 'admin') {
+                    .maybeSingle()
+                    .then(({ data: profile, error }: any) => {
+                        if (error) {
+                            console.warn('Profile lookup warning:', error);
+                        }
+                        if (isAdminUser(profile?.role, session.user.email)) {
                             navigate('/');
                         }
                     });
@@ -76,14 +84,13 @@ const Login = () => {
                     .from('profiles')
                     .select('role')
                     .eq('id', data.session.user.id)
-                    .single();
+                    .maybeSingle();
 
                 if (profileError) {
-                    await supabase.auth.signOut();
-                    throw new Error('Failed to verify user permissions. Please try again.');
+                    console.warn('Profile lookup warning:', profileError);
                 }
 
-                if (profile?.role !== 'admin') {
+                if (!isAdminUser(profile?.role, data.session.user.email)) {
                     await supabase.auth.signOut();
                     throw new Error('Unauthorized access. Admin privileges required.');
                 }

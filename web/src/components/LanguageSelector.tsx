@@ -10,7 +10,7 @@ export const LanguageSelector = () => {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex items-center gap-1 text-sm font-medium">
+    <div className="flex items-center gap-1 text-sm font-medium flex-shrink-0">
       {languageLabels.map((lang, index) => (
         <span key={lang.code} className="flex items-center">
           <button

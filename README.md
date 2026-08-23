@@ -1,6 +1,16 @@
-# Shree Hari Mitti ke Bartan
+# Shree Hari Mitti ke Bartan 🏺
 
 A modern ecommerce platform for pottery and handicraft products built with React, TypeScript, Vite, and Supabase.
+
+## 🌐 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Website-success?style=for-the-badge)](https://sumo0207.github.io/Shree-Hari-Mitti-ke-Bartan/)
+
+**Live Website:**  
+https://sumo0207.github.io/Shree-Hari-Mitti-ke-Bartan/
+
+**GitHub Repository:**  
+https://github.com/Sumo0207/Shree-Hari-Mitti-ke-Bartan
 
 ## 🎯 Project Overview
 

@@ -43,7 +43,7 @@ const Products = () => {
     const [loading, setLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState<Product | null>(null);
-    const [formData, setFormData] = useState<Partial<Product>>({
+    const [formData, setFormData] = useState<any>({
         visible: true,
         is_featured: false,
     });
@@ -94,12 +94,13 @@ const Products = () => {
                 name_en: '', name_hi: '', name_gu: '',
                 description_en: '', description_hi: '', description_gu: '',
                 story_en: '', story_hi: '', story_gu: '',
-                price: 0,
-                stock_status: 'in_stock',
                 category_id: null,
                 image_url: null,
                 size: '',
-                material: ''
+                material: '',
+                how_to_use_en: '',
+                how_to_use_hi: '',
+                how_to_use_gu: ''
             });
         }
         setFormLanguageTab('en'); // Reset to English tab when opening dialog
@@ -130,7 +131,6 @@ const Products = () => {
 
             const productData = {
                 ...rest,
-                price: formData.price ? Number(formData.price) : null,
             };
 
             const data = {
@@ -147,6 +147,9 @@ const Products = () => {
                 story_en: (productData as any).story_en || undefined,
                 story_hi: (productData as any).story_hi || undefined,
                 story_gu: (productData as any).story_gu || undefined,
+                how_to_use_en: (productData as any).how_to_use_en || undefined,
+                how_to_use_hi: (productData as any).how_to_use_hi || undefined,
+                how_to_use_gu: (productData as any).how_to_use_gu || undefined,
             };
 
             if (editingProduct) {
@@ -256,8 +259,6 @@ const Products = () => {
                             <TableHead className="w-[80px]">Image</TableHead>
                             <TableHead>Name ({activeTab.toUpperCase()})</TableHead>
                             <TableHead>Category</TableHead>
-                            <TableHead>Price</TableHead>
-                            <TableHead>Status</TableHead>
                             <TableHead>Visible</TableHead>
                             <TableHead className="w-[100px]">Actions</TableHead>
                         </TableRow>
@@ -265,7 +266,7 @@ const Products = () => {
                     <TableBody>
                         {filteredProducts.length === 0 ? (
                             <TableRow>
-                                <TableCell colSpan={7} className="text-center h-24 text-muted-foreground">
+                                <TableCell colSpan={5} className="text-center h-24 text-muted-foreground">
                                     No products found.
                                 </TableCell>
                             </TableRow>
@@ -284,8 +285,6 @@ const Products = () => {
                                         </div>
                                     </TableCell>
                                     <TableCell>{getCategoryName(product.category_id)}</TableCell>
-                                    <TableCell>₹{product.price}</TableCell>
-                                    <TableCell>{product.stock_status}</TableCell>
                                     <TableCell>
                                         {product.visible ? <Eye className="h-4 w-4 text-green-500" /> : <EyeOff className="h-4 w-4 text-muted-foreground" />}
                                     </TableCell>
@@ -337,35 +336,7 @@ const Products = () => {
                                     />
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="price">Price (₹)</Label>
-                                        <Input
-                                            id="price"
-                                            type="number"
-                                            min="0"
-                                            value={formData.price || 0}
-                                            onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="stock">Stock Status</Label>
-                                        <Select
-                                            value={formData.stock_status || 'in_stock'}
-                                            onValueChange={(value) => setFormData({ ...formData, stock_status: value })}
-                                        >
-                                            <SelectTrigger>
-                                                <SelectValue placeholder="Select status" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="in_stock">In Stock</SelectItem>
-                                                <SelectItem value="low_stock">Low Stock</SelectItem>
-                                                <SelectItem value="out_of_stock">Out of Stock</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
                                         <Label htmlFor="size">Size</Label>
                                         <Input
@@ -387,23 +358,35 @@ const Products = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex items-center space-x-4">
-                                    <div className="flex items-center space-x-2">
-                                        <Switch
-                                            id="visible"
-                                            checked={formData.visible}
-                                            onCheckedChange={(checked) => setFormData({ ...formData, visible: checked })}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="material">Material</Label>
+                                        <Input
+                                            id="material"
+                                            value={formData.material || ''}
+                                            onChange={(e) => setFormData({ ...formData, material: e.target.value })}
+                                            placeholder="e.g. Clay"
                                         />
-                                        <Label htmlFor="visible">Visible</Label>
                                     </div>
 
-                                    <div className="flex items-center space-x-2">
-                                        <Switch
-                                            id="featured"
-                                            checked={formData.is_featured || false}
-                                            onCheckedChange={(checked) => setFormData({ ...formData, is_featured: checked })}
-                                        />
-                                        <Label htmlFor="featured">Featured</Label>
+                                    <div className="flex items-center space-x-4">
+                                        <div className="flex items-center space-x-2">
+                                            <Switch
+                                                id="visible"
+                                                checked={formData.visible}
+                                                onCheckedChange={(checked) => setFormData({ ...formData, visible: checked })}
+                                            />
+                                            <Label htmlFor="visible">Visible</Label>
+                                        </div>
+
+                                        <div className="flex items-center space-x-2">
+                                            <Switch
+                                                id="featured"
+                                                checked={formData.is_featured || false}
+                                                onCheckedChange={(checked) => setFormData({ ...formData, is_featured: checked })}
+                                            />
+                                            <Label htmlFor="featured">Featured</Label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -468,6 +451,16 @@ const Products = () => {
                                                 rows={3}
                                             />
                                         </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="how_to_use_en">How to Use (English)</Label>
+                                            <Textarea
+                                                id="how_to_use_en"
+                                                value={formData.how_to_use_en || ''}
+                                                onChange={(e) => setFormData({ ...formData, how_to_use_en: e.target.value })}
+                                                placeholder="How to use this product in English"
+                                                rows={4}
+                                            />
+                                        </div>
                                     </TabsContent>
                                     
                                     {/* Hindi Tab */}
@@ -520,6 +513,16 @@ const Products = () => {
                                                 rows={3}
                                             />
                                         </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="how_to_use_hi">कैसे इस्तेमाल करें (Hindi)</Label>
+                                            <Textarea
+                                                id="how_to_use_hi"
+                                                value={formData.how_to_use_hi || ''}
+                                                onChange={(e) => setFormData({ ...formData, how_to_use_hi: e.target.value })}
+                                                placeholder="हिंदी में उपयोग की जानकारी"
+                                                rows={4}
+                                            />
+                                        </div>
                                     </TabsContent>
                                     
                                     {/* Gujarati Tab */}
@@ -570,6 +573,16 @@ const Products = () => {
                                                 onChange={(e) => setFormData({ ...formData, story_gu: e.target.value })}
                                                 placeholder="ગુજરાતીમાં વાર્તા"
                                                 rows={3}
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="how_to_use_gu">કેમ વાપરશો (Gujarati)</Label>
+                                            <Textarea
+                                                id="how_to_use_gu"
+                                                value={formData.how_to_use_gu || ''}
+                                                onChange={(e) => setFormData({ ...formData, how_to_use_gu: e.target.value })}
+                                                placeholder="ગુજરાતીમાં વાપરવાની માહિતી"
+                                                rows={4}
                                             />
                                         </div>
                                     </TabsContent>

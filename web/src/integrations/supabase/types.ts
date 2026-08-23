@@ -253,9 +253,7 @@ export type Database = {
           name_en: string | null
           name_hi: string | null
           name_gu: string | null
-          price: number | null
           size: string | null
-          stock_status: string | null
           story: string | null
           story_en: string | null
           story_hi: string | null
@@ -280,9 +278,7 @@ export type Database = {
           name_en?: string | null
           name_hi?: string | null
           name_gu?: string | null
-          price?: number | null
           size?: string | null
-          stock_status?: string | null
           story?: string | null
           story_en?: string | null
           story_hi?: string | null
@@ -307,9 +303,7 @@ export type Database = {
           name_en?: string | null
           name_hi?: string | null
           name_gu?: string | null
-          price?: number | null
           size?: string | null
-          stock_status?: string | null
           story?: string | null
           story_en?: string | null
           story_hi?: string | null

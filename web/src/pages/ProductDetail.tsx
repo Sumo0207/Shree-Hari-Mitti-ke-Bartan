@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PageTransition } from "@/components/PageTransition";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Package, Check, X, Clock } from "lucide-react";
+import { ArrowLeft, Package } from "lucide-react";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import {
     Carousel,
@@ -25,10 +25,12 @@ interface Product {
     category?: { name: string };
     is_featured: boolean;
     product_images?: ProductImage[];
-    price?: number;
-    stock_status?: "in_stock" | "out_of_stock" | "made_to_order";
     size?: string;
     material?: string;
+    how_to_use?: string | null;
+    how_to_use_en?: string | null;
+    how_to_use_hi?: string | null;
+    how_to_use_gu?: string | null;
 }
 
 interface ProductImage {
@@ -40,7 +42,7 @@ interface ProductImage {
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const { t, getLocalizedContent } = useLanguage();
+    const { t, language, getLocalizedContent } = useLanguage();
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
@@ -101,17 +103,9 @@ const ProductDetail = () => {
         ...(product.product_images || [])
     ].sort((a, b) => a.display_order - b.display_order);
 
-    const getStockStatusParams = (status: string | undefined) => {
-        switch (status) {
-            case 'in_stock': return { label: 'In Stock', icon: Check, color: 'text-green-600 bg-green-100' };
-            case 'out_of_stock': return { label: 'Out of Stock', icon: X, color: 'text-red-600 bg-red-100' };
-            case 'made_to_order': return { label: 'Made to Order', icon: Clock, color: 'text-amber-600 bg-amber-100' };
-            default: return { label: 'Check Availability', icon: Package, color: 'text-blue-600 bg-blue-100' };
-        }
-    };
-
-    const stockInfo = getStockStatusParams(product.stock_status);
-    const StockIcon = stockInfo.icon;
+    
+    const howToUseTitle = language === 'hi' ? 'कैसे इस्तेमाल करें' : language === 'gu' ? 'કેમ વાપરવું' : 'How to use';
+    const howToUseContent = getLocalizedContent(product, 'how_to_use');
 
     return (
         <PageTransition>
@@ -169,17 +163,6 @@ const ProductDetail = () => {
                                 {getLocalizedContent(product, 'name')}
                             </h1>
 
-                            <div className="flex items-center gap-4 mb-6">
-                                {product.price && (
-                                    <span className="text-3xl font-bold text-primary">
-                                        ₹{product.price}
-                                    </span>
-                                )}
-                                <div className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2 ${stockInfo.color}`}>
-                                    <StockIcon size={14} />
-                                    <span>{stockInfo.label}</span>
-                                </div>
-                            </div>
 
                             <div className="prose prose-stone dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
                                 <p>{getLocalizedContent(product, 'description')}</p>
@@ -208,6 +191,17 @@ const ProductDetail = () => {
                                 </h3>
                                 <p className="text-muted-foreground italic leading-relaxed">
                                     "{getLocalizedContent(product, 'story')}"
+                                </p>
+                            </div>
+                        )}
+
+                        {howToUseContent && (
+                            <div className="bg-secondary/30 p-6 rounded-xl space-y-3">
+                                <h3 className="font-semibold text-lg text-primary flex items-center gap-2">
+                                    <span className="text-2xl">🧴</span> {howToUseTitle}
+                                </h3>
+                                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                                    {howToUseContent}
                                 </p>
                             </div>
                         )}
@@ -243,9 +237,6 @@ const ProductDetail = () => {
                                         </div>
                                         <div className="p-4">
                                             <h3 className="font-semibold text-clay-dark truncate">{getLocalizedContent(related, 'name')}</h3>
-                                            {related.price && (
-                                                <p className="text-primary font-medium mt-1">₹{related.price}</p>
-                                            )}
                                         </div>
                                     </div>
                                 </Link>

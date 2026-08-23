@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from './lib/supabase';
 import { Session } from '@supabase/supabase-js';
 import { Database } from './lib/types';
+import { isAdminUser } from './lib/adminAccess';
 
 type Profile = Database['public']['Tables']['profiles']['Row'];
 
@@ -24,7 +25,6 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     const [session, setSession] = useState<Session | null>(null);
     const [profile, setProfile] = useState<Profile | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchSessionAndProfile = async () => {
@@ -36,11 +36,20 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
                     .from('profiles')
                     .select('*')
                     .eq('id', session.user.id)
-                    .single();
+                    .maybeSingle();
                 
                 if (profileError) {
-                    console.error('Error fetching profile:', profileError);
-                    setError('Failed to fetch user profile');
+                    // Log structured error details to help diagnose 404/406 from Supabase
+                    console.warn('Profile lookup warning:', {
+                        message: profileError.message,
+                        status: (profileError as any).status || (profileError as any).statusCode || null,
+                        details: (profileError as any).details || (profileError as any).hint || null,
+                        raw: profileError,
+                    });
+                }
+
+                if (isAdminUser(profileData?.role, session.user.email)) {
+                    setProfile(profileData);
                 } else {
                     setProfile(profileData);
                 }
@@ -52,7 +61,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
         const {
             data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
+        } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
             setSession(session);
             if (!session) {
                 setProfile(null);
@@ -63,8 +72,16 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
                     .from('profiles')
                     .select('*')
                     .eq('id', session.user.id)
-                    .single()
-                    .then(({ data }) => {
+                    .maybeSingle()
+                        .then(({ data, error }: any) => {
+                        if (error) {
+                            console.warn('Profile lookup warning:', {
+                                message: error.message,
+                                status: error.status || error.statusCode || null,
+                                details: error.details || error.hint || null,
+                                raw: error,
+                            });
+                        }
                         setProfile(data);
                         setLoading(false);
                     });
@@ -82,23 +99,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
         return <Navigate to="/login" replace />;
     }
 
-    if (error) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center">
-                    <p className="text-red-500 mb-4">{error}</p>
-                    <button 
-                        onClick={() => supabase.auth.signOut()}
-                        className="text-blue-500 hover:underline"
-                    >
-                        Sign out and try again
-                    </button>
-                </div>
-            </div>
-        );
-    }
-
-    if (profile?.role !== 'admin') {
+    if (!isAdminUser(profile?.role, session?.user?.email)) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">

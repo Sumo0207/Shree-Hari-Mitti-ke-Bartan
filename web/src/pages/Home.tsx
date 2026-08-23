@@ -244,7 +244,6 @@ const Home = () => {
                       <div className="p-6">
                         <h3 className="text-xl font-semibold text-clay-dark mb-2">{getLocalizedContent(product, 'name')}</h3>
                         <p className="text-primary font-medium">Coming Soon</p>
-                        {/* You might want to format price here if available */}
                       </div>
                     </div>
                   </Link>

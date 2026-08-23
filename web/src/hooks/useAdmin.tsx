@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
+import { isAdminUser } from '@/lib/adminAccess';
 
 export const useAdmin = () => {
   const { user, loading: authLoading } = useAuth();
@@ -25,9 +26,9 @@ export const useAdmin = () => {
 
         if (error) {
           console.error('Error checking admin status:', error);
-          setIsAdmin(false);
+          setIsAdmin(isAdminUser(undefined, user?.email));
         } else {
-          setIsAdmin(!!data);
+          setIsAdmin(!!data || isAdminUser(undefined, user?.email));
         }
       } catch (error) {
         console.error('Error checking admin status:', error);
