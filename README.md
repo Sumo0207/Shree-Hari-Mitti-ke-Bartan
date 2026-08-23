@@ -9,9 +9,6 @@ A modern ecommerce platform for pottery and handicraft products built with React
 **Live Website:**  
 https://sumo0207.github.io/Shree-Hari-Mitti-ke-Bartan/
 
-**GitHub Repository:**  
-https://github.com/Sumo0207/Shree-Hari-Mitti-ke-Bartan
-
 ## 🎯 Project Overview
 
 This project is a full-stack web application with separate admin and customer-facing websites, all connected to a Supabase backend database.
